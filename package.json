@@ -1,0 +1,27 @@
+{
+  "name": "lit-input",
+  "version": "1.0.0",
+  "description": "Web component to input text implemented with LitElement.",
+  "main": "lit-input.js",
+  "scripts": {
+    "start": "polymer serve --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Victor-Bernabe/lit-input.git"
+  },
+  "keywords": [
+    "webcomponent",
+    "input",
+    "LitElement"
+  ],
+  "author": "Victor Bernabe Perez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Victor-Bernabe/lit-input/issues"
+  },
+  "homepage": "https://github.com/Victor-Bernabe/lit-input#readme",
+  "dependencies": {
+    "lit-element": "^2.0.1"
+  }
+}
