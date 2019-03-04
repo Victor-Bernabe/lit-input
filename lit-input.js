@@ -9,14 +9,24 @@ class LitInput extends LitElement {
     * {
       box-sizing: border-box;
     }
+
     :host {
       display: inline-block;
       position: relative;
     }
+
+    /* Iron icon depends on input styles to fit inside */
     iron-icon {
       display: none;
       position: absolute;
+      --iron-icon-height: var(--lit-input-height, 24px);
+      --iron-icon-width: var(--lit-input-height, 24px);
     }
+    iron-icon:hover {
+      cursor: pointer;
+    }
+
+    /* Display icon if it's positioned */
     :host([icon-right]) > iron-icon {
       display: inline;
       right: 0;
@@ -24,6 +34,47 @@ class LitInput extends LitElement {
     :host([icon-left]) > iron-icon {
       display: inline;
       left: 0;
+    }
+
+    /* Input style */
+    input {
+      width: var(--lit-input-width, 250px);
+      height: var(--lit-input-height, 24px);
+      padding: 5px;
+      border: var(--lit-input-border, 1px solid black);
+      background-color: var(--lit-input-background-color, white);
+      font-size: var(--lit-input-font-size, calc(var(--lit-input-height) / 1.8));
+      color: var(--lit-input-text-color, inherit);
+    }
+    input:focus {
+      border: var(--lit-input-border-focus, 1px solid #4d90fe);
+    }
+
+    /* Padding space for iron-icon */
+    :host([icon-right]) > input {
+      padding-right: var(--lit-input-height, 24px);
+    }
+    :host([icon-left]) > input {
+      padding-left: var(--lit-intpu-height, 24px);
+    }
+
+    /* Text direction */
+    :host([text-right]) > input {
+      text-align: right;
+    }
+    :host([text-left]) > input {
+      text-align: left;
+    }
+
+    /* Placeholder color */
+    ::placeholder {
+      color: var(--lit-input-placeholder-color, #a0a0a0);
+    }
+    :-ms-input-placeholder {
+      color: var(--lit-input-placeholder-color, #a0a0a0);
+    }
+    ::-ms-input-placeholder {
+      color: var(--lit-input-placeholder-color, #a0a0a0);
     }
     `;
   }
@@ -41,13 +92,16 @@ class LitInput extends LitElement {
     super();
     this._input = {};
     this.value = '';
-    this.placeHolder = '';
+    this.placeHolder = 'Search...';
     this.icon = 'icons:search';
   }
 
   render() {
     return html`
-    <iron-icon icon="${this.icon}"></iron-icon>
+    <iron-icon
+      icon="${this.icon}"
+      @click="${this._onIconClick}">
+    </iron-icon>
     <input
       type="text"
       placeholder="${this.placeHolder}"
@@ -122,6 +176,16 @@ class LitInput extends LitElement {
 
   _onBlur(event) {
     this.dispatchEvent(new CustomEvent('focus-lost', {
+      detail: {
+        value: this._input.value
+      },
+      composed: true,
+      bubbles: true
+    }));
+  }
+
+  _onIconClick(event) {
+    this.dispatchEvent(new CustomEvent('icon-clicked', {
       detail: {
         value: this._input.value
       },
