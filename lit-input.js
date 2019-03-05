@@ -13,14 +13,17 @@ class LitInput extends LitElement {
     :host {
       display: inline-block;
       position: relative;
+
+      /* Iron-icon smaller than input */
+      --iron-icon-computed-size: calc(var(--lit-input-height, 30px) - 8px);
     }
 
     /* Iron icon depends on input styles to fit inside */
     iron-icon {
       display: none;
       position: absolute;
-      --iron-icon-height: var(--lit-input-height, 24px);
-      --iron-icon-width: var(--lit-input-height, 24px);
+      --iron-icon-height: var(--iron-icon-computed-size, 22px);
+      --iron-icon-width: var(--iron-icon-computed-size, 22px);
     }
     iron-icon:hover {
       cursor: pointer;
@@ -29,17 +32,19 @@ class LitInput extends LitElement {
     /* Display icon if it's positioned */
     :host([icon-right]) > iron-icon {
       display: inline;
-      right: 0;
+      right: 4px;
+      top: 4px;
     }
     :host([icon-left]) > iron-icon {
       display: inline;
-      left: 0;
+      left: 4px;
+      top: 4px;
     }
 
     /* Input style */
     input {
-      width: var(--lit-input-width, 250px);
-      height: var(--lit-input-height, 24px);
+      width: var(--lit-input-width, 300px);
+      height: var(--lit-input-height, 30px);
       padding: 5px;
       border: var(--lit-input-border, 1px solid black);
       background-color: var(--lit-input-background-color, white);
@@ -52,10 +57,10 @@ class LitInput extends LitElement {
 
     /* Padding space for iron-icon */
     :host([icon-right]) > input {
-      padding-right: var(--lit-input-height, 24px);
+      padding-right: var(--lit-input-height, 30px);
     }
     :host([icon-left]) > input {
-      padding-left: var(--lit-intpu-height, 24px);
+      padding-left: var(--lit-input-height, 30px);
     }
 
     /* Text direction */
