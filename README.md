@@ -4,13 +4,15 @@
 
 Web component to input text implemented with LitElement.
 
+See [Documentation](https://www.webcomponents.org/element/lit-input), [Demo](https://lit-input.victorbp.site).
+
 ## Installation
 
 ```shell
 npm install lit-input --save
 ```
 
-Then, import lit-input into your element:
+Then import lit-input into your element:
 
 ```javascript
 import 'lit-input/lit-input.js';
@@ -26,40 +28,47 @@ or in an html file:
 
 In your LitElement class:
 ```javascript
-static get properties() {
-  return {
-    _query: { type: String },
-    _isMobile: { type: Boolean }
+static get styles() {
+  return css`
+  * {
+    box-sizing: border-box;
   }
+  :host {
+    display: block;
+
+    --lit-input-width: 350px;
+    --lit-input-height: 30px;
+  }
+  `;
+}
+static get properties() {
+  return {};
 }
 
 constructor() {
   super();
-  this._query = '(max-width: 460px)';
-  this._isMobile = false;
 }
 
 render() {
   return html`
-  <lit-media-query
-    .query="${this._query}"
-    @changed="${this._handleMediaQuery}">
-  </lit-media-query>
+  <lit-input
+    icon-right
+    text-left
+    .icon="${'icons:close'}"
+    @key-pressed="${this._log}"
+    @enter-pressed="${this._log}"
+    @focus-lost="${this._log}"
+    @icon-clicked="${this._log}">
+  </lit-input>
   `;
 }
 
-_handleMediaQuery(event) {
-  this._isMobile = event.detail.value;
+_log(event) {
+  console.log(event.detail.value);
 }
 ```
 
-Variable `value` from the event is a `Boolean`. Will be `true` if the media query is fulfilled, otherwise is `false`.
-
-In this example, when the viewport is less than 460px the variable `_isMobile` will be `true`.
-
-## Browser compatibility
-
-`lit-media-query` uses [Visual Viewport API](https://developer.mozilla.org/en-US/docs/Web/API/Visual_Viewport_API) which is not yet compatible with all browsers, but it will fall back to `window onresize` event, increasing the browsers compatibility.
+Variable `value` from the event is a `String` containing the text inside `lit-input`
 
 ## Contributing
 

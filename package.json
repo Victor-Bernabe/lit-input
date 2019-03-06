@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/Victor-Bernabe/lit-input#readme",
   "dependencies": {
+    "@polymer/iron-icon": "github:PolymerElements/iron-icon",
+    "@polymer/iron-icons": "github:PolymerElements/iron-icons",
     "lit-element": "^2.0.1"
   }
 }
