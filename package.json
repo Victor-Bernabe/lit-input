@@ -1,6 +1,6 @@
 {
   "name": "lit-input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Web component to input text implemented with LitElement.",
   "main": "lit-input.js",
   "scripts": {
