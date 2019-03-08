@@ -33,7 +33,7 @@ import '@polymer/iron-icon/iron-icon.js';
  *     <lit-input icon-left></lit-input>
  *     <lit-input icon-right></lit-input>
  *
- * The icon type can be any from `iron-icon`. See [here]{@link http://www.twelvetone.tv/iron-icons-search/}.
+ * The icon type can be any from `iron-icon`. See [here](http://www.twelvetone.tv/iron-icons-search/)
  *
  *     <lit-input icon-left .icon="${'hardware:headset'}"></lit-input>
  *
@@ -156,7 +156,7 @@ class LitInput extends LitElement {
       /**
        * Icon to be shown inside `lit-input`.
        *
-       * See [iron-icon demo]{@link https://www.webcomponents.org/element/@polymer/iron-icons/demo/demo/index.html} to check all possible values.
+       * See [iron-icon demo](https://www.webcomponents.org/element/@polymer/iron-icons/demo/demo/index.html) to check all possible values.
        */
       icon: { type: String }
     };
