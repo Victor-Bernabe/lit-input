@@ -15,7 +15,7 @@ import '@polymer/iron-icon/iron-icon.js';
  *
  * Custom property | Description | Default
  * ----------------|-------------|--------
- * `--lit-input-width` | Width | `300px`
+ * `--lit-input-width` | Width | `250px`
  * `--lit-input-height` | Height | `30px`
  * `--lit-input-border` | Border | `1px solid black`
  * `--lit-input-border-focus` | Border when focused | `1px solid #4d90fe`
@@ -105,7 +105,7 @@ class LitInput extends LitElement {
 
     /* Input style */
     input {
-      width: var(--lit-input-width, 300px);
+      width: var(--lit-input-width, 250px);
       height: var(--lit-input-height, 30px);
       padding: 5px;
       border: var(--lit-input-border, 1px solid black);
